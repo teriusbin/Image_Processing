@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="algorithm1_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+    <string-array name="algorithm2_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+    <string-array name="algorithm3_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+    <string-array name="algorithm4_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+    <string-array name="algorithm5_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+    <string-array name="algorithm6_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+    <string-array name="algorithm7_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+    <string-array name="algorithm8_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+    <string-array name="algorithm9_parameter">
+        <item>parameter1</item>
+        <item>parameter2</item>
+        <item>parameter3</item>
+        <item>parameter4</item>
+        <item>parameter5</item>
+        <item>parameter6</item>
+    </string-array>
+
+</resources>
