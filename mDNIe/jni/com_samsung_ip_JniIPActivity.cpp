@@ -20,7 +20,7 @@ extern "C" {
 JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeOnCreate
   (JNIEnv *, jobject)
 {
-
+  //test()
 
 }
 
