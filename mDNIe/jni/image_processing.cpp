@@ -3,7 +3,7 @@
 #include <jni.h>
 #include <android/log.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 unsigned char **Image2DMem( int width, int height)
 {
 	 unsigned char** temp;
@@ -64,7 +64,7 @@ unsigned char **ImageProcessing(unsigned char **inputImage, int width, int heigh
 
 	unsigned char **OutputImage = Image2DMem(width, height);
 
-	 for(int i=0 ; i<(height); i++){ //ÃÊ±âÈ­
+	 for(int i=0 ; i<(height); i++){
 
 		 for(int j=0 ; j<(width) ; j++){
 
