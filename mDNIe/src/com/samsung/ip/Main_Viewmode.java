@@ -40,7 +40,7 @@ public class Main_Viewmode extends Fragment {
 		image2 = (ImageView) getView().findViewById(R.id.viewmode_result);
 		prevAttacher = new PhotoViewAttacher(image1);
 		resultAttacher = new PhotoViewAttacher(image2);
-		image1.setImageBitmap(((JniIPActivity) getActivity()).rawBitmap);
+		image1.setImageBitmap(((JniIPActivity) getActivity()).scaledBitmap);
 		image2.setImageBitmap(((JniIPActivity) getActivity()).resultBitmap);
 
 	}

@@ -18,6 +18,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class Main_Result extends Fragment {
 
 	public final static String TAG = "Main_Result";
+
 	public ImageView image2;
 
 	PhotoViewAttacher mAttacher;
