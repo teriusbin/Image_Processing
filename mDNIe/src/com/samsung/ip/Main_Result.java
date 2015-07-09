@@ -73,16 +73,17 @@ public class Main_Result extends Fragment {
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		image2.setImageBitmap(((JniIPActivity) getActivity()).resultBitmap);
 
 	}
 
-	public void test() {
+	public void Result_toggle() {
 
 		if (((JniIPActivity) getActivity()).image_result_flag == false) {
 			Log.d(TAG, "bitmap = rawBitmap");
 			image2 = (ImageView) getView().findViewById(R.id.imageview2);
 			mAttacher = new PhotoViewAttacher(image2);
-			image2.setImageBitmap(((JniIPActivity) getActivity()).rawBitmap);
+			image2.setImageBitmap(((JniIPActivity) getActivity()).scaledBitmap);
 			((JniIPActivity) getActivity()).image_result_flag = true;
 		} else if (((JniIPActivity) getActivity()).image_result_flag == true) {
 

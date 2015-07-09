@@ -97,7 +97,7 @@ public class JniIPActivity extends FragmentActivity {
 					if (frag_changed_flag) {
 						Main_Result main_result = (Main_Result) getSupportFragmentManager()
 								.findFragmentById(R.id.ll_fragment_main);
-						main_result.test();
+						main_result.Result_toggle();
 					} else {
 						mCurrentFragmentIndex = FRAGMENT_RESULT;
 						fragmentReplace(mCurrentFragmentIndex);
@@ -112,9 +112,15 @@ public class JniIPActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intentSubActivity = new Intent(JniIPActivity.this, Setting.class);
+//				Intent intentSubActivity = new Intent(JniIPActivity.this, Setting.class);
+//				startActivity(intentSubActivity);
+//				frag_changed_flag = false;
+				
+				Intent intentSubActivity = new Intent(JniIPActivity.this, MultipleChoiceListView.class);
 				startActivity(intentSubActivity);
-				frag_changed_flag = false;
+				//Intent intent = new Intent();
+			    //intent.setClassName(this, "com.samsung.ip.MultipleChoiceListView");
+			//    startActivity(intent);
 			}
 		});
 		btn_realtime_setting.setOnClickListener(new OnClickListener() {
