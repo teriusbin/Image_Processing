@@ -55,7 +55,6 @@ public class JniIPActivity extends FragmentActivity {
 	public ImageView image;
 	
 	public Bitmap scaledBitmap;
-	public boolean buttonTouch;
 	private Bitmap rawBitmap;
 	
 	PhotoViewAttacher mAttacher;
@@ -174,18 +173,6 @@ public class JniIPActivity extends FragmentActivity {
 		return newFragment;
 	}
 
-	public String getImageNameToUri(Uri data) {
-		String[] proj = { MediaStore.Images.Media.DATA };
-		Cursor cursor = managedQuery(data, proj, null, null, null);
-		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-
-		cursor.moveToFirst();
-
-		String imgPath = cursor.getString(column_index);
-		String imgName = imgPath.substring(imgPath.lastIndexOf("/") + 1);
-
-		return imgName;
-	}
 	
 	public String getRealPathFromURI(Uri contentUri){
 		String[] proj = {MediaStore.Images.Media.DATA};
@@ -251,62 +238,10 @@ public class JniIPActivity extends FragmentActivity {
 					    mAttacher.setScaleType(ScaleType.FIT_CENTER);
 					    
 		            
-					/*
-					int rotatedWidth, rotatedHeight;
-					int orientation = getOrientation(this, data.getData());
-					
-					
-					Log.d(TAG, "debug 1  "+rawBitmap.getWidth());
-					Log.d(TAG, "debug 1  "+rawBitmap.getHeight());
-					
-					if (orientation == 90 || orientation == 270) {
-					        rotatedWidth = rawBitmap.getHeight();
-					        rotatedHeight = rawBitmap.getWidth();
-					    } else {
-					        rotatedWidth = rawBitmap.getWidth();
-					        rotatedHeight = rawBitmap.getHeight();
-					    }
-*/
-					
-					//Bitmap.createScaledBitmap(scaledBitmap, scaledBitmap.getWidth()/4, scaledBitmap.getHeight()/4, false);
-					/*int width = rawBitmap.getWidth(); 
-			        int height = rawBitmap.getHeight(); 
-			        int newWidth = 200; 
-			        int newHeight = 200; 
-			        
-			        float scaleWidth = ((float) newWidth) / width; 
-			        float scaleHeight = ((float) newHeight) / height; 
-			        
-			        Matrix matrix = new Matrix(); 
-			        // resize the bit map 
-			        matrix.postScale(scaleWidth, scaleHeight); 
-			        // rotate the Bitmap 
-			        matrix.postRotate(45); 
-			        
-			        Bitmap resizedBitmap = Bitmap.createBitmap(rawBitmap, 0, 0, 
-	                          width, height, matrix, true); 
-	    
-			        // make a Drawable from Bitmap to allow to set the BitMap 
-			        // to the ImageView, ImageButton or what ever 
-			        BitmapDrawable bmd = new BitmapDrawable(resizedBitmap); 
-			        
-			        ImageView imageView = new ImageView(this); 
-			        
-			        // set the Drawable on the ImageView 
-			        imageView.setImageDrawable(bmd); 
-			      
-			        // center the Image 
-			        imageView.setScaleType(ImageView.ScaleType.CENTER); */
-					/*if(rawBitmap.getHeight() < rawBitmap.getWidth()){
-					    	
-						rawBitmap = imgRotate(rawBitmap);
-					    	
-					 }
-					   */
+			
 					   
-					
-				    
-				 
+			
+
 				    
 					image.setImageBitmap(scaledBitmap);
 
@@ -323,18 +258,7 @@ public class JniIPActivity extends FragmentActivity {
 		}
 	}
 	
-	private Bitmap imgRotate(Bitmap bmp){
-		int width = bmp.getWidth(); 
-		int height = bmp.getHeight(); 
 
-		Matrix matrix = new Matrix(); 
-		matrix.postRotate(90); 
-
-		Bitmap resizedBitmap = Bitmap.createBitmap(bmp, 0, 0, width, height, matrix, true); 
-		bmp.recycle();
-
-		return resizedBitmap;
-	}
 	@Override
 	protected void onResume() {
 		// Ideally a game should implement onResume() and onPause()
