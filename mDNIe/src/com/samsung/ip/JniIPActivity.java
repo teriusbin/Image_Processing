@@ -238,10 +238,10 @@ public class JniIPActivity extends FragmentActivity {
 			                  width *= (scale/100);
 			                  height *= (scale/100);                  
 			             }
-			            
-			            //scaledBitmap = Bitmap.createBitmap(rawBitmap, 0, 0, rawBitmap.getWidth(),rawBitmap.getHeight(), matrix, true);
-			           scaledBitmap = Bitmap.createBitmap(rawBitmap, 0, 0, (int)width,(int)height, matrix, true);
-		                
+			           
+			            scaledBitmap = Bitmap.createBitmap(rawBitmap, 0, 0, rawBitmap.getWidth(),rawBitmap.getHeight(), matrix, true);
+			            scaledBitmap = Bitmap.createScaledBitmap(scaledBitmap, (int)width,(int)height,true);
+			           
 		                Log.d(TAG, "debug 1  "+scaledBitmap.getWidth());
 						Log.d(TAG, "debug 1  "+scaledBitmap.getHeight());
 						
