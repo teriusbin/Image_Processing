@@ -255,6 +255,5 @@ public class JniIPActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 
 	}
-	// test git commit Å×½ºÆ® 
 }
 

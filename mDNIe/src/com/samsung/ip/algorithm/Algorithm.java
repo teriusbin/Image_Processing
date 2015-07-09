@@ -5,7 +5,6 @@ import java.util.List;
 public class Algorithm {
 	private String name;
 	private boolean enable;
-
 	private List<Parameter> parameter;
 
 	public Algorithm(String name, boolean enable, List<Parameter> paramter) {

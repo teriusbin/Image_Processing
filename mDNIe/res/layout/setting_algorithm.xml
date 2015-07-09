@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+
     <ListView
         android:id="@+id/algo_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
-
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:divider="#ffcc22"
+        android:dividerHeight="1.5dp" />
 
 </LinearLayout>
