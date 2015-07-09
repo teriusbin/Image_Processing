@@ -9,8 +9,9 @@
         android:id="@+id/algo_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:choiceMode="singleChoice"
-        android:divider="#ffcc22"
-        android:dividerHeight="1.5dp" />
+        android:choiceMode="multipleChoice"
+        android:divider="#000000"
+        android:dividerHeight="1.5dp" 
+        android:cacheColorHint="#00000000"/>
 
 </LinearLayout>

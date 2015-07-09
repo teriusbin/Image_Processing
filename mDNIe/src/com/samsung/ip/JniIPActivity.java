@@ -3,17 +3,10 @@ package com.samsung.ip;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
-import com.samsung.ip.R;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -23,7 +16,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -48,15 +40,17 @@ public class JniIPActivity extends FragmentActivity {
 
 	public ImageView image;
 	public Bitmap scaledBitmap;
-	private Bitmap rawBitmap;
+	public Bitmap rawBitmap;
+	public Bitmap resultBitmap;
 	PhotoViewAttacher mAttacher;
-
+	public boolean image_result_flag = false;
+	public boolean image_load_flag = false;
+	public boolean frag_changed_flag = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		
 		setContentView(R.layout.activity_jni_gl);
 
 		// 버튼 리스너에 등록
@@ -78,14 +72,30 @@ public class JniIPActivity extends FragmentActivity {
 
 				mCurrentFragmentIndex = FRAGMENT_IMAGELOAD;
 				fragmentReplace(mCurrentFragmentIndex);
+				frag_changed_flag = false;
 			}
 		});
 		btn_result.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				mCurrentFragmentIndex = FRAGMENT_RESULT;
-				fragmentReplace(mCurrentFragmentIndex);
+				Log.d(TAG, "button clicked");
+
+				if (rawBitmap != null) {
+					if (frag_changed_flag) {
+						Main_Result main_result = (Main_Result) getSupportFragmentManager()
+								.findFragmentById(R.id.ll_fragment_main);
+						main_result.test();
+					}
+					else
+					{
+						mCurrentFragmentIndex = FRAGMENT_RESULT;
+						fragmentReplace(mCurrentFragmentIndex);
+						frag_changed_flag = true;
+					}
+				
+				}
+
 			}
 		});
 		btn_setting.setOnClickListener(new OnClickListener() {
@@ -94,6 +104,7 @@ public class JniIPActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 				Intent intentSubActivity = new Intent(JniIPActivity.this, Setting.class);
 				startActivity(intentSubActivity);
+				frag_changed_flag = false;
 			}
 		});
 		btn_realtime_setting.setOnClickListener(new OnClickListener() {
@@ -102,6 +113,7 @@ public class JniIPActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 				mCurrentFragmentIndex = FRAGMENT_SETTING;
 				fragmentReplace(mCurrentFragmentIndex);
+				frag_changed_flag = false;
 			}
 		});
 		btn_viewmode.setOnClickListener(new OnClickListener() {
@@ -110,6 +122,7 @@ public class JniIPActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 				mCurrentFragmentIndex = FRAGMENT_VIEWMODE;
 				fragmentReplace(mCurrentFragmentIndex);
+				frag_changed_flag = false;
 			}
 		});
 
@@ -189,27 +202,29 @@ public class JniIPActivity extends FragmentActivity {
 
 					// 이미지 데이터를 비트맵으로 받아온다.
 					rawBitmap = Images.Media.getBitmap(getContentResolver(), data.getData());
-					//Bitmap.createScaledBitmap(scaledBitmap, scaledBitmap.getWidth()/4, scaledBitmap.getHeight()/4, false);
-					
-					int viewHeight = 500;   //height 값으로 해상도 조절
-					
+					// Bitmap.createScaledBitmap(scaledBitmap,
+					// scaledBitmap.getWidth()/4, scaledBitmap.getHeight()/4,
+					// false);
+
+					int viewHeight = 500; // height 값으로 해상도 조절
+
 					float width = rawBitmap.getWidth();
-		            float height = rawBitmap.getHeight();
-		            
-		            if(height > viewHeight)
-		            {
-		                  float percente = (float)(height/100);
-		                  float scale = (float)(viewHeight/percente);
-		                  width *= (scale/100);
-		                  height *= (scale/100);                  
-		             }
-		            
-		            scaledBitmap = Bitmap.createScaledBitmap(rawBitmap, (int)width, (int)height, true);
-		            image = (ImageView) findViewById(R.id.imageview1);
+					float height = rawBitmap.getHeight();
+
+					if (height > viewHeight) {
+						float percente = (float) (height / 100);
+						float scale = (float) (viewHeight / percente);
+						width *= (scale / 100);
+						height *= (scale / 100);
+					}
+
+					scaledBitmap = Bitmap.createScaledBitmap(rawBitmap, (int) width, (int) height, true);
+					image = (ImageView) findViewById(R.id.imageview1);
 					mAttacher = new PhotoViewAttacher(image);
-				        // 3.화면에 꽉차는 옵션 (선택사항)
-				    mAttacher.setScaleType(ScaleType.FIT_CENTER);
+					// 3.화면에 꽉차는 옵션 (선택사항)
+					mAttacher.setScaleType(ScaleType.FIT_CENTER);
 					image.setImageBitmap(scaledBitmap);
+					image_load_flag = true;
 
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -229,7 +244,7 @@ public class JniIPActivity extends FragmentActivity {
 		// Ideally a game should implement onResume() and onPause()
 		// to take appropriate action when the activity looses focus
 		super.onResume();
-		
+
 	}
 
 	@Override
@@ -237,7 +252,7 @@ public class JniIPActivity extends FragmentActivity {
 		// Ideally a game should implement onResume() and onPause()
 		// to take appropriate action when the activity looses focus
 		super.onPause();
-		
+
 	}
 
 	private GLSurfaceView mGLSurfaceView;
@@ -248,12 +263,10 @@ public class JniIPActivity extends FragmentActivity {
 		System.loadLibrary("jnigl");
 	}
 
-
 	public static native int nativeGetOutputPixel(byte[] inputpixels, byte[] outputPixel, int width, int height);
-	
+
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 
 	}
 }
-
