@@ -22,7 +22,8 @@ obj/local/armeabi/objs/jnigl/image_processing.o: jni/image_processing.cpp \
  C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/types.h \
  C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/kernel.h \
  C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/sysmacros.h \
- C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/memory.h
+ C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/memory.h \
+ C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/stdio.h
 
 jni/image_processing.h:
 
@@ -71,3 +72,5 @@ C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/kernel.h:
 C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/sysmacros.h:
 
 C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/memory.h:
+
+C:/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/stdio.h:
