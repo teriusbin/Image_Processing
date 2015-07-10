@@ -19,11 +19,13 @@ public class Main_Result extends Fragment {
 
 	public final static String TAG = "Main_Result";
 
-	public ImageView image2;
+
+	public ImageView resultImage;
+
 
 	PhotoViewAttacher mAttacher;
-	private byte[] inputPixel;
-	private byte[] outputPixel;
+
+	
 
 	static Bitmap inputBitmap;
 	static Bitmap outputBitmap;
@@ -34,37 +36,61 @@ public class Main_Result extends Fragment {
 
 		return v;
 	}
+	
+	
+	public byte[] getInputPixel(Bitmap input){
+		
+		byte[] resultPixel;
+		
+		int bytes = input.getByteCount();
+		
+		ByteBuffer inputBuffer = ByteBuffer.allocate(bytes);
+		input.copyPixelsToBuffer(inputBuffer);
+		
+		resultPixel = inputBuffer.array();
+		
+		return resultPixel;
+	}
+	
+	public Bitmap getOutputBitmap(int length, byte[] outputPixel){
+		
+		Bitmap resultBitmap;
+		
+		ByteBuffer outBuffer = ByteBuffer.allocate(length);
+		
+		outBuffer.put(outputPixel, 0, length);
+		outBuffer.rewind();
+		
+		resultBitmap = Bitmap.createBitmap(inputBitmap.getWidth(), inputBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+		resultBitmap.copyPixelsFromBuffer(outBuffer);
 
+		return resultBitmap;
+	}
+	
+	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 
-		Log.d(TAG, "image processing");
 		inputBitmap = ((JniIPActivity) getActivity()).scaledBitmap;
-		int bytes = inputBitmap.getByteCount();
+		
+		byte[] inputPixel = getInputPixel(inputBitmap);
+		byte[] outputPixel = new byte[inputBitmap.getByteCount()];
 
-		ByteBuffer inputBuffer = ByteBuffer.allocate(bytes);
-		inputBitmap.copyPixelsToBuffer(inputBuffer);
-
-		inputPixel = inputBuffer.array();
-		outputPixel = new byte[bytes];
+		
 
 		int length = JniIPActivity.nativeGetOutputPixel(inputPixel, outputPixel, inputBitmap.getWidth(),
 				inputBitmap.getHeight());
 
-		ByteBuffer outBuffer = ByteBuffer.allocate(length);
-		outBuffer.put(outputPixel, 0, length);
-		outBuffer.rewind();
-
-		outputBitmap = Bitmap.createBitmap(inputBitmap.getWidth(), inputBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-		outputBitmap.copyPixelsFromBuffer(outBuffer);
-
-		image2 = (ImageView) getView().findViewById(R.id.imageview2);
-		mAttacher = new PhotoViewAttacher(image2);
+		
+		outputBitmap = getOutputBitmap(length, outputPixel);
+		
+		resultImage = (ImageView) getView().findViewById(R.id.imageview2);
+		mAttacher = new PhotoViewAttacher(resultImage);
 
 		((JniIPActivity) getActivity()).resultBitmap = outputBitmap;
-		image2.setImageBitmap(outputBitmap);
+		resultImage.setImageBitmap(outputBitmap);
 		((JniIPActivity) getActivity()).image_load_flag = true;
 
 	}
@@ -73,7 +99,9 @@ public class Main_Result extends Fragment {
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		image2.setImageBitmap(((JniIPActivity) getActivity()).resultBitmap);
+
+		resultImage.setImageBitmap(((JniIPActivity) getActivity()).resultBitmap);
+
 
 	}
 
@@ -81,16 +109,18 @@ public class Main_Result extends Fragment {
 
 		if (((JniIPActivity) getActivity()).image_result_flag == false) {
 			Log.d(TAG, "bitmap = rawBitmap");
-			image2 = (ImageView) getView().findViewById(R.id.imageview2);
-			mAttacher = new PhotoViewAttacher(image2);
-			image2.setImageBitmap(((JniIPActivity) getActivity()).scaledBitmap);
+
+			resultImage = (ImageView) getView().findViewById(R.id.imageview2);
+			mAttacher = new PhotoViewAttacher(resultImage);
+			resultImage.setImageBitmap(((JniIPActivity) getActivity()).scaledBitmap);
+
 			((JniIPActivity) getActivity()).image_result_flag = true;
 		} else if (((JniIPActivity) getActivity()).image_result_flag == true) {
 
 			Log.d(TAG, "bitmap = resultBitmap");
-			image2 = (ImageView) getView().findViewById(R.id.imageview2);
-			mAttacher = new PhotoViewAttacher(image2);
-			image2.setImageBitmap(((JniIPActivity) getActivity()).resultBitmap);
+			resultImage = (ImageView) getView().findViewById(R.id.imageview2);
+			mAttacher = new PhotoViewAttacher(resultImage);
+			resultImage.setImageBitmap(((JniIPActivity) getActivity()).resultBitmap);
 			((JniIPActivity) getActivity()).image_result_flag = false;
 		}
 	}

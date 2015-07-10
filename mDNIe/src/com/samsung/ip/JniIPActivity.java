@@ -194,15 +194,69 @@ public class JniIPActivity extends FragmentActivity {
 		return newFragment;
 	}
 
-	public String getRealPathFromURI(Uri contentUri) {
+
+	private String getRealPathFromURI(Uri contentUri) {
+		
 		String[] proj = { MediaStore.Images.Media.DATA };
+		
 		Cursor cursor = managedQuery(contentUri, proj, null, null, null);
+		
 		int colume_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+		
 		cursor.moveToFirst();
+		
+
 		return cursor.getString(colume_index);
 
 	}
 
+	
+	private int[] getScaledWindthHeight(int width, int heigth) {
+		
+		int viewHeight = 500; 
+		float scaledWidth = width;
+		float scaledHeigth = heigth;
+
+
+		if (scaledHeigth > viewHeight) {
+			
+			float percente = (float) (scaledHeigth / 100);
+			
+			float scale = (float) (viewHeight / percente);
+			
+			scaledWidth *= (scale / 100);
+			
+			scaledHeigth *= (scale / 100);
+		}
+		
+		return new int[] {(int)scaledWidth, (int)scaledHeigth};
+
+	}
+	private Matrix getRotatinoRatio(Uri data) throws IOException{
+	
+		ExifInterface exif = new ExifInterface(getRealPathFromURI(data));
+		int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+
+		Log.d("EXIF", "Exif: " + orientation);
+		Matrix matrix = new Matrix();
+		
+		if (orientation == 6) {
+			
+			matrix.postRotate(90);
+			
+		} else if (orientation == 3) {
+			
+			matrix.postRotate(180);
+			
+		} else if (orientation == 8) {
+			
+			matrix.postRotate(270);
+			
+		}
+		
+		return matrix;
+	}
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -212,49 +266,26 @@ public class JniIPActivity extends FragmentActivity {
 			if (resultCode == Activity.RESULT_OK) {
 				try {
 
-					// 이미지 데이터를 비트맵으로 받아온다.
 					rawBitmap = Images.Media.getBitmap(getContentResolver(), data.getData());
 
-					ExifInterface exif = new ExifInterface(getRealPathFromURI(data.getData()));
-					int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+					
+					Matrix matrix = getRotatinoRatio(data.getData());
+					int imageInformation[] = getScaledWindthHeight(rawBitmap.getWidth(),rawBitmap.getHeight());
+			
+					scaledBitmap = Bitmap.createBitmap(rawBitmap, 0, 0, rawBitmap.getWidth(), rawBitmap.getHeight(),matrix, true);
+					scaledBitmap = Bitmap.createScaledBitmap(scaledBitmap, imageInformation[0], imageInformation[1], true);
 
-					Log.d("EXIF", "Exif: " + orientation);
-					Matrix matrix = new Matrix();
-					if (orientation == 6) {
-						matrix.postRotate(90);
-					} else if (orientation == 3) {
-						matrix.postRotate(180);
-					} else if (orientation == 8) {
-						matrix.postRotate(270);
-					}
 
-					int viewHeight = 500; // height 값으로 해상도 조절
-
-					float width = rawBitmap.getWidth();
-					float height = rawBitmap.getHeight();
-
-					if (height > viewHeight) {
-						float percente = (float) (height / 100);
-						float scale = (float) (viewHeight / percente);
-						width *= (scale / 100);
-						height *= (scale / 100);
-					}
-
-					scaledBitmap = Bitmap.createBitmap(rawBitmap, 0, 0, rawBitmap.getWidth(), rawBitmap.getHeight(),
-							matrix, true);
-					scaledBitmap = Bitmap.createScaledBitmap(scaledBitmap, (int) width, (int) height, true);
-
-					Log.d(TAG, "debug 1  " + scaledBitmap.getWidth());
-					Log.d(TAG, "debug 1  " + scaledBitmap.getHeight());
 
 					image = (ImageView) findViewById(R.id.imageview1);
+					
 					mAttacher = new PhotoViewAttacher(image);
-					// 3.화면에 꽉차는 옵션 (선택사항)
 					mAttacher.setScaleType(ScaleType.FIT_CENTER);
 
 					image.setImageBitmap(scaledBitmap);
+					
 					image_load_flag = true;
-
+					
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
