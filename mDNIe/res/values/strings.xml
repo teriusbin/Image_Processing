@@ -6,12 +6,23 @@
     <string name="title_activity_jni_gl">IP_mDNIe</string>
 
     <string-array name="jazz_artist_names">
-        <item>Algorithm1</item>
-        <item>Algorithm2</item>
-        <item>Algorithm3</item>
-        <item>Algorithm4</item>
-        <item>Algorithm5</item>
-        <item>Algorithm6</item>
+        <item>Algorithm 1</item>
+        <item>Algorithm 2</item>
+        <item>Algorithm 3</item>
+        <item>Algorithm 4</item>
+        <item>Algorithm 5</item>
+        <item>Algorithm 6</item>
     </string-array>
-
+	
+    
+     <string-array name="param">
+        <item>Parameter 1</item>
+        <item>Parameter 2</item>
+        <item>Parameter 3</item>
+        <item>Parameter 4</item>
+        <item>Parameter 5</item>
+        <item>Parameter 6</item>
+    </string-array>
+    
+     
 </resources>

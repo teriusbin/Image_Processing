@@ -4,6 +4,7 @@
 #include <android/log.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 unsigned char **Image2DMem( int width, int height)
 {
 	 unsigned char** temp;

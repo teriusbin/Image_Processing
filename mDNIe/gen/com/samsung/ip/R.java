@@ -20,6 +20,7 @@ public final class R {
         public static final int algorithm8_parameter=0x7f040008;
         public static final int algorithm9_parameter=0x7f040009;
         public static final int jazz_artist_names=0x7f04000a;
+        public static final int param=0x7f04000b;
     }
     public static final class attr {
         /** <p>Must be an integer value, such as "<code>100</code>".

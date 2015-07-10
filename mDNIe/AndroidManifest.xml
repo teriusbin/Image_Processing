@@ -22,6 +22,7 @@
         </activity>
         <activity android:name="Setting"></activity>
         <activity android:name="MultipleChoiceListView"></activity>
+        <activity android:name="SetParameter"></activity>
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 

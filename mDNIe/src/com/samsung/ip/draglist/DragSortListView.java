@@ -1119,6 +1119,7 @@ public class DragSortListView extends ListView {
         }
 
         return updated;
+        
     }
 
     @Override
@@ -1402,7 +1403,7 @@ public class DragSortListView extends ListView {
     public void removeItem(int which) {
 
         mUseRemoveVelocity = false;
-        removeItem(which, 0);
+       // removeItem(which, 0);
     }
 
     /**
