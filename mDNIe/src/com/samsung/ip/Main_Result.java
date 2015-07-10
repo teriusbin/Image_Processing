@@ -102,11 +102,13 @@ public class Main_Result extends Fragment {
 	public void Result_toggle() {
 
 		if (((JniIPActivity) getActivity()).image_result_flag == false) {
+			
 			Log.d(TAG, "bitmap = rawBitmap");
 			resultImage = (ImageView) getView().findViewById(R.id.imageview2);
 			mAttacher = new PhotoViewAttacher(resultImage);
 			resultImage.setImageBitmap(((JniIPActivity) getActivity()).scaledBitmap);
 			((JniIPActivity) getActivity()).image_result_flag = true;
+			
 		} else if (((JniIPActivity) getActivity()).image_result_flag == true) {
 
 			Log.d(TAG, "bitmap = resultBitmap");
@@ -114,6 +116,7 @@ public class Main_Result extends Fragment {
 			mAttacher = new PhotoViewAttacher(resultImage);
 			resultImage.setImageBitmap(((JniIPActivity) getActivity()).resultBitmap);
 			((JniIPActivity) getActivity()).image_result_flag = false;
+			
 		}
 	}
 

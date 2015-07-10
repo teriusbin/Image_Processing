@@ -114,9 +114,6 @@ JNIEXPORT jint JNICALL Java_com_samsung_ip_JniIPActivity_nativeGetOutputPixel
 	int c_width  = width<<1;
 	int size = c_height * c_width;
 
-	__android_log_print(ANDROID_LOG_DEBUG, "native", "width %d ", c_width);
-	__android_log_print(ANDROID_LOG_DEBUG, "native", "width %d ", c_height);
-
 	unsigned char *srcdata = new unsigned char[(width*height)<<2];
 	env->GetByteArrayRegion (inputarr, 0, (width*height)<<2, reinterpret_cast<jbyte*>(srcdata)); //inputData
 

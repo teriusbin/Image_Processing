@@ -20,6 +20,7 @@ public final class R {
         public static final int algorithm8_parameter=0x7f040008;
         public static final int algorithm9_parameter=0x7f040009;
         public static final int jazz_artist_names=0x7f04000a;
+        public static final int param=0x7f04000b;
     }
     public static final class attr {
         /** <p>Must be an integer value, such as "<code>100</code>".
@@ -246,10 +247,12 @@ containing a value of this type.
         public static final int main_realtime_frag=0x7f030005;
         public static final int main_result_frag=0x7f030006;
         public static final int main_viemode_frag=0x7f030007;
-        public static final int setting_algorithm=0x7f030008;
-        public static final int setting_page=0x7f030009;
-        public static final int setting_parameter=0x7f03000a;
-        public static final int setting_reset=0x7f03000b;
+        public static final int param_checkable_main=0x7f030008;
+        public static final int param_list_item_checkable=0x7f030009;
+        public static final int setting_algorithm=0x7f03000a;
+        public static final int setting_page=0x7f03000b;
+        public static final int setting_parameter=0x7f03000c;
+        public static final int setting_reset=0x7f03000d;
     }
     public static final class menu {
         public static final int activity_jni_gl=0x7f090000;
