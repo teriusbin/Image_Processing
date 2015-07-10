@@ -5,4 +5,13 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_jni_gl">IP_mDNIe</string>
 
+    <string-array name="jazz_artist_names">
+        <item>Algorithm1</item>
+        <item>Algorithm2</item>
+        <item>Algorithm3</item>
+        <item>Algorithm4</item>
+        <item>Algorithm5</item>
+        <item>Algorithm6</item>
+    </string-array>
+
 </resources>
