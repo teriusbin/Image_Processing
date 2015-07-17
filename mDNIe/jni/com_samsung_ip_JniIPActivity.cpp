@@ -107,9 +107,51 @@ JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeOnTouchEvent
  * Method:    nativeSetTextureData
  * Signature: ([III)V
  */
+
+void getAlgorithm_1_parameter(JNIEnv *env){
+
+	jclass parameterClass =  env->FindClass("com/samsung/ip/Alogrithm$Algorithm_1_parameter");
+	jmethodID parameterClassConstructor = env->GetMethodID(parameterClass, "<init>", "(Lcom/samsung/ip/Alogrithm;)V");
+	jobject object = env->NewObject(parameterClass, parameterClassConstructor, NULL);
+
+	jmethodID metId = env->GetMethodID(parameterClass,"getParameter_1","()I");
+	int parameter1 = env->CallIntMethod(object,metId);
+	__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******inner class...%d" , parameter1);
+
+}
+
+void getAlgorithmName(JNIEnv *env, jobject algorithmObject){
+
+	jclass algorithmClass = env->GetObjectClass(algorithmObject);
+
+	/*direct access member value*/
+	jfieldID fid = env->GetFieldID(algorithmClass, "nonce", "I");
+	int myInt = env->GetIntField(algorithmObject, fid);
+	__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******first...%d", myInt);
+
+	/*getter access member value*/
+	jmethodID metId = env->GetMethodID(algorithmClass, "getNonce", "()I");
+	int test = env->CallIntMethod(algorithmObject, metId);
+	__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******second...%d", test);
+
+	/*getter access string value*/
+	jmethodID method = env->GetMethodID(algorithmClass, "getName","()Ljava/lang/String;");
+	jstring resultJNIStr = (jstring) env->CallObjectMethod(algorithmObject,method);
+	const char *resultCStr = env->GetStringUTFChars(resultJNIStr, NULL);
+	__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******third...%s",resultCStr);
+
+	env->ReleaseStringUTFChars(resultJNIStr, resultCStr);
+
+}
+
 JNIEXPORT jint JNICALL Java_com_samsung_ip_JniIPActivity_nativeGetOutputPixel
-(JNIEnv *env, jclass thiz, jbyteArray inputarr, jbyteArray  outpuarr, jint width, jint height)
+(JNIEnv *env, jclass thiz, jbyteArray inputarr, jbyteArray  outpuarr, jobject algorithmObject, jint width, jint height)
 {
+
+
+	getAlgorithm_1_parameter(env);
+	getAlgorithmName(env, algorithmObject);
+
 	int c_height = height<<1;
 	int c_width  = width<<1;
 	int size = c_height * c_width;

@@ -19,8 +19,9 @@ public final class R {
         public static final int algorithm7_parameter=0x7f040007;
         public static final int algorithm8_parameter=0x7f040008;
         public static final int algorithm9_parameter=0x7f040009;
-        public static final int jazz_artist_names=0x7f04000a;
-        public static final int param=0x7f04000b;
+        public static final int algorithmlist=0x7f04000a;
+        public static final int menu_list=0x7f04000c;
+        public static final int parameterlist=0x7f04000b;
     }
     public static final class attr {
         /** <p>Must be an integer value, such as "<code>100</code>".
@@ -183,86 +184,106 @@ containing a value of this type.
         public static final int section_div_height=0x7f050001;
     }
     public static final class drawable {
-        public static final int delete_x=0x7f020000;
-        public static final int drag=0x7f020001;
-        public static final int dslv_launcher=0x7f020002;
-        public static final int ic_action_search=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int lenna=0x7f020005;
-        public static final int point=0x7f020006;
+        public static final int action_search=0x7f020000;
+        public static final int delete_x=0x7f020001;
+        public static final int drag=0x7f020002;
+        public static final int dslv_launcher=0x7f020003;
+        public static final int ic_action_search=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int menu=0x7f020006;
+        public static final int menu_bar=0x7f020007;
+        public static final int menu_icon=0x7f020008;
+        public static final int multi=0x7f020009;
+        public static final int multiwindow=0x7f02000a;
+        public static final int output=0x7f02000b;
+        public static final int outputicon=0x7f02000c;
+        public static final int slidingdrawer=0x7f02000d;
     }
     public static final class id {
-        public static final int algo1_para1=0x7f060016;
-        public static final int algo1_para1_value=0x7f060017;
-        public static final int algo1_para2=0x7f060019;
-        public static final int algo1_para2_value=0x7f06001a;
-        public static final int algo1_seekbar1=0x7f060018;
-        public static final int algo1_seekbar2=0x7f06001b;
-        public static final int algo1_setting=0x7f060015;
-        public static final int algo2_para1=0x7f06001d;
-        public static final int algo2_para1_value=0x7f06001e;
-        public static final int algo2_para2=0x7f060020;
-        public static final int algo2_para2_value=0x7f060021;
-        public static final int algo2_seekbar1=0x7f06001f;
-        public static final int algo2_seekbar2=0x7f060022;
-        public static final int algo2_setting=0x7f06001c;
-        public static final int algo_list=0x7f060026;
-        public static final int btn_algorithm=0x7f060029;
-        public static final int btn_home=0x7f060027;
-        public static final int btn_imageload=0x7f060007;
-        public static final int btn_parameter=0x7f06002a;
-        public static final int btn_realtime_setting=0x7f06000a;
-        public static final int btn_reset=0x7f060028;
-        public static final int btn_result=0x7f060008;
-        public static final int btn_setting=0x7f060009;
-        public static final int btn_viewmode=0x7f06000b;
+        public static final int action_result=0x7f060031;
+        public static final int action_viewmode=0x7f060030;
+        public static final int algo1_para1=0x7f060014;
+        public static final int algo1_para1_value=0x7f060015;
+        public static final int algo1_para2=0x7f060017;
+        public static final int algo1_para2_value=0x7f060018;
+        public static final int algo1_seekbar1=0x7f060016;
+        public static final int algo1_seekbar2=0x7f060019;
+        public static final int algo1_setting=0x7f060013;
+        public static final int algo2_para1=0x7f06001b;
+        public static final int algo2_para1_value=0x7f06001c;
+        public static final int algo2_para2=0x7f06001e;
+        public static final int algo2_para2_value=0x7f06001f;
+        public static final int algo2_seekbar1=0x7f06001d;
+        public static final int algo2_seekbar2=0x7f060020;
+        public static final int algo2_setting=0x7f06001a;
+        public static final int algo_list=0x7f06002a;
+        public static final int btn_algorithm=0x7f06002d;
+        public static final int btn_home=0x7f06002b;
+        public static final int btn_parameter=0x7f06002e;
+        public static final int btn_reset=0x7f06002c;
         public static final int clickRemove=0x7f060002;
         public static final int click_remove=0x7f060001;
-        public static final int content=0x7f060013;
+        public static final int content=0x7f060011;
+        public static final int content_frame=0x7f060008;
         public static final int drag_handle=0x7f060000;
-        public static final int drawer=0x7f060012;
+        public static final int drawer=0x7f060010;
+        public static final int drawer_layout=0x7f060007;
         public static final int flingRemove=0x7f060003;
-        public static final int handle=0x7f060014;
-        public static final int image_realtime=0x7f060011;
-        public static final int imageview=0x7f06000d;
-        public static final int imageview1=0x7f060010;
-        public static final int imageview2=0x7f060023;
-        public static final int ll_fragment_main=0x7f06000c;
-        public static final int ll_fragment_setting=0x7f06002b;
-        public static final int menu_settings=0x7f06002c;
+        public static final int handle=0x7f060012;
+        public static final int image=0x7f06000a;
+        public static final int image_realtime=0x7f06000f;
+        public static final int imageview=0x7f06000b;
+        public static final int imageview1=0x7f06000e;
+        public static final int imageview2=0x7f060021;
+        public static final int left_drawer=0x7f060009;
+        public static final int ll_fragment_setting=0x7f06002f;
         public static final int onDown=0x7f060004;
         public static final int onLongPress=0x7f060005;
         public static final int onMove=0x7f060006;
-        public static final int text=0x7f06000f;
-        public static final int textview=0x7f06000e;
-        public static final int viewmode_prev=0x7f060024;
-        public static final int viewmode_result=0x7f060025;
+        public static final int result_content=0x7f060023;
+        public static final int result_drawer=0x7f060022;
+        public static final int result_handle=0x7f060024;
+        public static final int text=0x7f06000d;
+        public static final int textview=0x7f06000c;
+        public static final int viewmode_content=0x7f060028;
+        public static final int viewmode_drawer=0x7f060027;
+        public static final int viewmode_handle=0x7f060029;
+        public static final int viewmode_prev=0x7f060025;
+        public static final int viewmode_result=0x7f060026;
     }
     public static final class layout {
         public static final int activity_jni_gl=0x7f030000;
         public static final int checkable_main=0x7f030001;
-        public static final int item=0x7f030002;
-        public static final int list_item_checkable=0x7f030003;
-        public static final int main_imageload_frag=0x7f030004;
-        public static final int main_realtime_frag=0x7f030005;
-        public static final int main_result_frag=0x7f030006;
-        public static final int main_viemode_frag=0x7f030007;
-        public static final int setting_algorithm=0x7f030008;
-        public static final int setting_page=0x7f030009;
-        public static final int setting_parameter=0x7f03000a;
-        public static final int setting_reset=0x7f03000b;
+        public static final int drawer_list_item=0x7f030002;
+        public static final int fragment_planet=0x7f030003;
+        public static final int item=0x7f030004;
+        public static final int list_item_checkable=0x7f030005;
+        public static final int main_imageload_frag=0x7f030006;
+        public static final int main_realtime_frag=0x7f030007;
+        public static final int main_result_frag=0x7f030008;
+        public static final int main_viemode_frag=0x7f030009;
+        public static final int setting_algorithm=0x7f03000a;
+        public static final int setting_page=0x7f03000b;
+        public static final int setting_parameter=0x7f03000c;
+        public static final int setting_reset=0x7f03000d;
     }
     public static final class menu {
-        public static final int activity_jni_gl=0x7f090000;
+        public static final int main=0x7f080000;
     }
     public static final class string {
+        public static final int action_result=0x7f07000a;
+        public static final int action_settings=0x7f07000c;
+        public static final int action_viewmode=0x7f070009;
+        public static final int action_websearch=0x7f070008;
         public static final int app_name=0x7f070000;
+        public static final int app_not_available=0x7f07000b;
+        public static final int close=0x7f070005;
+        public static final int drawer_close=0x7f070007;
+        public static final int drawer_open=0x7f070006;
         public static final int hello_world=0x7f070001;
         public static final int menu_settings=0x7f070002;
+        public static final int open=0x7f070004;
         public static final int title_activity_jni_gl=0x7f070003;
-    }
-    public static final class style {
-        public static final int AppTheme=0x7f080000;
     }
     public static final class styleable {
         /** Attributes that can be used with a DragSortListView.

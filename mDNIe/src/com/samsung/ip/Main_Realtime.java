@@ -26,6 +26,11 @@ public class Main_Realtime extends Fragment {
 	public TextView algo2_para2;
 	PhotoViewAttacher RealtimeAttacher;
 
+	
+	public Main_Realtime newInstance(){
+		Main_Realtime fragment = new Main_Realtime();
+		return fragment;
+	}
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View v = inflater.inflate(R.layout.main_realtime_frag, container, false);
@@ -40,7 +45,7 @@ public class Main_Realtime extends Fragment {
 		image1 = (ImageView) getView().findViewById(R.id.image_realtime);
 
 		RealtimeAttacher = new PhotoViewAttacher(image1);
-		image1.setImageBitmap(((JniIPActivity) getActivity()).scaledBitmap);
+		//image1.setImageBitmap(((JniIPActivity) getActivity()).scaledBitmap);
 		handle = (ImageView) getView().findViewById(R.id.handle);
 		algo1_para1 = (TextView) getView().findViewById(R.id.algo1_para1_value);
 		algo1_para2 = (TextView) getView().findViewById(R.id.algo1_para2_value);
