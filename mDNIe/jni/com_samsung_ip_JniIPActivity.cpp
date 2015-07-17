@@ -144,13 +144,36 @@ void getAlgorithmName(JNIEnv *env, jobject algorithmObject){
 
 }
 
+void getAlgorithm(JNIEnv *env, jobject algorithmObject){
+
+	jclass algorithmClass = env->GetObjectClass(algorithmObject);
+
+	jmethodID method = env->GetMethodID(algorithmClass, "getListSize", "()I");
+	int length = env->CallIntMethod(algorithmObject, method);
+
+
+	for (int i = 0; i < length; i++) {
+
+		jmethodID method = env->GetMethodID(algorithmClass, "getName","(I)Ljava/lang/String;");
+		jstring resultJNIStr = (jstring) env->CallObjectMethod(algorithmObject,method, i);
+
+		const char *resultCStr = env->GetStringUTFChars(resultJNIStr, NULL);
+		__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******third...%s", resultCStr);
+
+		env->ReleaseStringUTFChars(resultJNIStr, resultCStr);
+
+	}
+
+}
+
 JNIEXPORT jint JNICALL Java_com_samsung_ip_JniIPActivity_nativeGetOutputPixel
 (JNIEnv *env, jclass thiz, jbyteArray inputarr, jbyteArray  outpuarr, jobject algorithmObject, jint width, jint height)
 {
 
+	//getAlgorithm_1_parameter(env);
+	//getAlgorithmName(env, algorithmObject);
+	//getAlgorithm(env,algorithmObject);
 
-	getAlgorithm_1_parameter(env);
-	getAlgorithmName(env, algorithmObject);
 
 	int c_height = height<<1;
 	int c_width  = width<<1;

@@ -614,7 +614,7 @@ public class JniIPActivity extends Activity {
 
 			Alogrithm algorithmClass = new Alogrithm();
 			Log.d("message", "java"+ " " + algorithmClass.getNonce());
-			Log.d("message", "java"+ " " + algorithmClass.getName());
+			
 			int length = JniIPActivity.nativeGetOutputPixel(inputPixel, outputPixel, algorithmClass, inputBitmap.getWidth(), inputBitmap.getHeight());
 
 			outputBitmap = getOutputBitmap(length, outputPixel);
