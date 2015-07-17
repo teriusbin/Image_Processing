@@ -60,7 +60,7 @@ unsigned char **MemoryCopy1Dto2D(unsigned char *srcdata, int width, int height){
 
 }
 
-unsigned char **ImageProcessing(unsigned char **inputImage, int width, int height)
+unsigned char **memcpy2DTo2D(unsigned char **inputImage, int width, int height)
 {
 
 	unsigned char **OutputImage = Image2DMem(width, height);
@@ -69,13 +69,7 @@ unsigned char **ImageProcessing(unsigned char **inputImage, int width, int heigh
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + 50 >= 255)
-
-				 OutputImage[i][j]= 255;
-
-			 else
-
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +50);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j]);
 
 		 }
 
@@ -84,3 +78,75 @@ unsigned char **ImageProcessing(unsigned char **inputImage, int width, int heigh
 	 return OutputImage;
 }
 
+unsigned char **ImageProcessing1(unsigned char **inputImage, int width, int height, struct ImageProcessing1 paramSet)
+{
+
+
+	unsigned char **OutputImage = Image2DMem(width, height);
+
+	 for(int i=0 ; i<(height); i++){
+
+		 for(int j=0 ; j<(width) ; j++){
+
+			 if(inputImage[i][j] + paramSet.param1 >= 255)
+
+				 OutputImage[i][j]= 255;
+
+			 else
+
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.param1);
+
+		 }
+
+	 }
+
+	 return OutputImage;
+}
+unsigned char **ImageProcessing2(unsigned char **inputImage, int width, int height, struct ImageProcessing2 paramSet)
+{
+
+
+	unsigned char **OutputImage = Image2DMem(width, height);
+
+	 for(int i=0 ; i<(height); i++){
+
+		 for(int j=0 ; j<(width) ; j++){
+
+			 if(inputImage[i][j] + paramSet.param1 >= 255)
+
+				 OutputImage[i][j]= 255;
+
+			 else
+
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.param1);
+
+		 }
+
+	 }
+
+	 return OutputImage;
+}
+unsigned char **ImageProcessing3(unsigned char **inputImage, int width, int height, struct ImageProcessing3 paramSet)
+{
+
+
+	unsigned char **OutputImage = Image2DMem(width, height);
+
+	 for(int i=0 ; i<(height); i++){
+
+		 for(int j=0 ; j<(width) ; j++){
+
+			 if(inputImage[i][j] + paramSet.param1 >= 255)
+
+				 OutputImage[i][j]= 255;
+
+			 else
+
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.param1);
+
+		 }
+
+	 }
+
+	 return OutputImage;
+}

@@ -297,14 +297,14 @@ public class JniIPActivity extends Activity {
 			if (rawBitmap != null) {
 
 				if (mViewModeFlag || mResultFlag) {
-					// 2분할 화면
+					
 					Fragment viewmode_fragment = new Main_SlideView();
 					FragmentManager viewmode_fragmentManager = getFragmentManager();
 					viewmode_fragmentManager.beginTransaction().replace(R.id.content_frame, viewmode_fragment).commit();
 					mViewModeFlag = false;
 					mResultFlag = false;
 				} else {
-					// 1분할 화면
+					
 					Fragment imageload_fragment = new Main_View();
 					FragmentManager imageload_fragmentManager = getFragmentManager();
 					imageload_fragmentManager.beginTransaction().replace(R.id.content_frame, imageload_fragment)
@@ -316,17 +316,17 @@ public class JniIPActivity extends Activity {
 			return true;
 
 		case R.id.action_result:
-			// 영상 처리 결과 보여주기
+		
 			if (rawBitmap != null) {
 				if (mResultFlag) {
-					// 원본 영상
+					
 					Fragment imageload_fragment = new Main_View();
 					FragmentManager imageload_fragmentManager = getFragmentManager();
 					imageload_fragmentManager.beginTransaction().replace(R.id.content_frame, imageload_fragment)
 							.commit();
 					mResultFlag = false;
 				} else {
-					// 영상 처리 영상
+				
 					Fragment result_fragment = new Main_Result();
 					FragmentManager result_fragmentManager = getFragmentManager();
 					result_fragmentManager.beginTransaction().replace(R.id.content_frame, result_fragment).commit();
@@ -376,6 +376,7 @@ public class JniIPActivity extends Activity {
 			/*
 			 * 갤러리에서 이미지 로드 position = 0
 			 */
+			resultBitmap = null;
 			mResultFlag = false;
 			mViewModeFlag = false;
 			Fragment imageload_fragment = new Main_View();
@@ -557,10 +558,7 @@ public class JniIPActivity extends Activity {
 		private ImageView mRealtimeHandle;
 
 		PhotoViewAttacher mAttacher;
-
-		Bitmap inputBitmap;
-		Bitmap outputBitmap;
-
+		
 		public Main_Result newInstance() {
 			Main_Result fragment = new Main_Result();
 			return fragment;
@@ -595,7 +593,7 @@ public class JniIPActivity extends Activity {
 			outBuffer.put(outputPixel, 0, length);
 			outBuffer.rewind();
 
-			resultBitmap = Bitmap.createBitmap(inputBitmap.getWidth(), inputBitmap.getHeight(),
+			resultBitmap = Bitmap.createBitmap(rawBitmap.getWidth(), rawBitmap.getHeight(),
 					Bitmap.Config.ARGB_8888);
 			resultBitmap.copyPixelsFromBuffer(outBuffer);
 
@@ -607,23 +605,25 @@ public class JniIPActivity extends Activity {
 			// TODO Auto-generated method stub
 			super.onActivityCreated(savedInstanceState);
 			mRealtimeHandle = (ImageView) findViewById(R.id.result_handle);
-			inputBitmap = ((JniIPActivity) getActivity()).rawBitmap;
-
-			byte[] inputPixel = getInputPixel(inputBitmap);
-			byte[] outputPixel = new byte[inputBitmap.getByteCount()];
+		
+			byte[] inputPixel = getInputPixel(((JniIPActivity) getActivity()).rawBitmap);
+			byte[] outputPixel = new byte[rawBitmap.getByteCount()];
 
 			Alogrithm algorithmClass = new Alogrithm();
 			Log.d("message", "java"+ " " + algorithmClass.getNonce());
 			
-			int length = JniIPActivity.nativeGetOutputPixel(inputPixel, outputPixel, algorithmClass, inputBitmap.getWidth(), inputBitmap.getHeight());
-
-			outputBitmap = getOutputBitmap(length, outputPixel);
-
+			
+			if(resultBitmap==null){
+				
+				int length = JniIPActivity.nativeGetOutputPixel(inputPixel, outputPixel, algorithmClass, rawBitmap.getWidth(), rawBitmap.getHeight());
+				((JniIPActivity) getActivity()).resultBitmap = getOutputBitmap(length, outputPixel);
+				
+			}
+			
 			resultImage = (ImageView) getView().findViewById(R.id.imageview2);
 			mAttacher = new PhotoViewAttacher(resultImage);
 
-			((JniIPActivity) getActivity()).resultBitmap = outputBitmap;
-			resultImage.setImageBitmap(outputBitmap);
+			resultImage.setImageBitmap(resultBitmap);
 			((JniIPActivity) getActivity()).image_load_flag = true;
 
 		}
@@ -635,8 +635,9 @@ public class JniIPActivity extends Activity {
 			resultImage.setImageBitmap(((JniIPActivity) getActivity()).resultBitmap);
 
 		}
+		
 		public void Result_toggle() {
-
+		
 		}
 
 	}

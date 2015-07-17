@@ -13,102 +13,12 @@ extern "C" {
 #endif
 
 /*
- * Class:     com_semo_jnigl_JniGLActivity
- * Method:    nativeOnCreate
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeOnCreate
-  (JNIEnv *, jobject)
-{
-
-
-}
-
-/*
- * Class:     com_semo_jnigl_JniGLActivity
- * Method:    nativeOnPause
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeOnPause
-  (JNIEnv *, jobject)
-{
-
-}
-
-/*
- * Class:     com_semo_jnigl_JniGLActivity
- * Method:    nativeOnResume
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeOnResume
-  (JNIEnv *, jobject)
-{
-
-}
-
-/*
- * Class:     com_semo_jnigl_JniGLActivity
- * Method:    nativeOnDestroy
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeOnDestroy
-  (JNIEnv *, jobject)
-{
-
-}
-
-/*
- * Class:     com_semo_jnigl_JniGLActivity
- * Method:    nativeInitGL
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeInitGL
-  (JNIEnv *, jobject)
-{
-
-}
-
-/*
- * Class:     com_semo_jnigl_JniGLActivity
- * Method:    nativeResize
- * Signature: (II)V
- */
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeResize
-  (JNIEnv *, jobject, jint w, jint h)
-{
-
-}
-
-/*
- * Class:     com_semo_jnigl_JniGLActivity
- * Method:    nativeDrawIteration
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeDrawIteration
-  (JNIEnv *, jclass, jfloat mx, jfloat my)
-{
-
-}
-
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeOnTrackballEvent
-  (JNIEnv *, jclass, jint e,jfloat x, jfloat y)
-{
-
-}
-
-JNIEXPORT void JNICALL Java_com_samsung_ip_JniIPActivity_nativeOnTouchEvent
-  (JNIEnv *, jclass, jint e,jfloat x, jfloat y)
-{
-
-}
-
-/*
  * Class:     com_nornenjs_android_JniGLActivity
  * Method:    nativeSetTextureData
  * Signature: ([III)V
  */
 
-void getAlgorithm_1_parameter(JNIEnv *env){
+struct ImageProcessing1 getAlgorithm_1_parameter(JNIEnv *env){
 
 	jclass parameterClass =  env->FindClass("com/samsung/ip/Alogrithm$Algorithm_1_parameter");
 	jmethodID parameterClassConstructor = env->GetMethodID(parameterClass, "<init>", "(Lcom/samsung/ip/Alogrithm;)V");
@@ -116,7 +26,49 @@ void getAlgorithm_1_parameter(JNIEnv *env){
 
 	jmethodID metId = env->GetMethodID(parameterClass,"getParameter_1","()I");
 	int parameter1 = env->CallIntMethod(object,metId);
-	__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******inner class...%d" , parameter1);
+
+	struct ImageProcessing1 paramSet;
+
+	paramSet.param1 = parameter1;
+
+	return paramSet;
+	//__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******inner class...%d" , parameter1);
+
+}
+
+struct ImageProcessing2 getAlgorithm_2_parameter(JNIEnv *env){
+
+	jclass parameterClass =  env->FindClass("com/samsung/ip/Alogrithm$Algorithm_2_parameter");
+	jmethodID parameterClassConstructor = env->GetMethodID(parameterClass, "<init>", "(Lcom/samsung/ip/Alogrithm;)V");
+	jobject object = env->NewObject(parameterClass, parameterClassConstructor, NULL);
+
+	jmethodID metId = env->GetMethodID(parameterClass,"getParameter_2","()I");
+	int parameter1 = env->CallIntMethod(object,metId);
+
+	struct ImageProcessing2 paramSet;
+
+	paramSet.param1 = parameter1;
+
+	return paramSet;
+	//__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******inner class...%d" , parameter1);
+
+}
+
+struct ImageProcessing3 getAlgorithm_3_parameter(JNIEnv *env){
+
+	jclass parameterClass =  env->FindClass("com/samsung/ip/Alogrithm$Algorithm_3_parameter");
+	jmethodID parameterClassConstructor = env->GetMethodID(parameterClass, "<init>", "(Lcom/samsung/ip/Alogrithm;)V");
+	jobject object = env->NewObject(parameterClass, parameterClassConstructor, NULL);
+
+	jmethodID metId = env->GetMethodID(parameterClass,"getParameter_3","()I");
+	int parameter1 = env->CallIntMethod(object,metId);
+
+	struct ImageProcessing3 paramSet;
+
+	paramSet.param1 = parameter1;
+
+	return paramSet;
+	//__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******inner class...%d" , parameter1);
 
 }
 
@@ -144,25 +96,18 @@ void getAlgorithmName(JNIEnv *env, jobject algorithmObject){
 
 }
 
-void getAlgorithm(JNIEnv *env, jobject algorithmObject){
-
-	jclass algorithmClass = env->GetObjectClass(algorithmObject);
-
-	jmethodID method = env->GetMethodID(algorithmClass, "getListSize", "()I");
-	int length = env->CallIntMethod(algorithmObject, method);
+const char* getAlgorithm(JNIEnv *env, jobject algorithmObject, jclass algorithmClass, int i){
 
 
-	for (int i = 0; i < length; i++) {
+	jmethodID method = env->GetMethodID(algorithmClass, "getName","(I)Ljava/lang/String;");
+	jstring resultJNIStr = (jstring) env->CallObjectMethod(algorithmObject,method, i);
 
-		jmethodID method = env->GetMethodID(algorithmClass, "getName","(I)Ljava/lang/String;");
-		jstring resultJNIStr = (jstring) env->CallObjectMethod(algorithmObject,method, i);
+	const char *resultCStr = env->GetStringUTFChars(resultJNIStr, NULL);
+	__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******third...%s", resultCStr);
 
-		const char *resultCStr = env->GetStringUTFChars(resultJNIStr, NULL);
-		__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******third...%s", resultCStr);
+	//env->ReleaseStringUTFChars(resultJNIStr, resultCStr);
 
-		env->ReleaseStringUTFChars(resultJNIStr, resultCStr);
-
-	}
+	return resultCStr;
 
 }
 
@@ -170,11 +115,8 @@ JNIEXPORT jint JNICALL Java_com_samsung_ip_JniIPActivity_nativeGetOutputPixel
 (JNIEnv *env, jclass thiz, jbyteArray inputarr, jbyteArray  outpuarr, jobject algorithmObject, jint width, jint height)
 {
 
-	//getAlgorithm_1_parameter(env);
-	//getAlgorithmName(env, algorithmObject);
-	//getAlgorithm(env,algorithmObject);
 
-
+	unsigned char **OutputImage;
 	int c_height = height<<1;
 	int c_width  = width<<1;
 	int size = c_height * c_width;
@@ -183,9 +125,44 @@ JNIEXPORT jint JNICALL Java_com_samsung_ip_JniIPActivity_nativeGetOutputPixel
 	env->GetByteArrayRegion (inputarr, 0, (width*height)<<2, reinterpret_cast<jbyte*>(srcdata)); //inputData
 
 	unsigned char **InputImage = MemoryCopy1Dto2D(srcdata, c_width, c_height);
-	unsigned char **OutputImage = ImageProcessing(InputImage,  c_width,  c_height);
-	unsigned char *destdata = MemoryCopy2Dto1D(OutputImage, c_width, c_height);
 
+	//getAlgorithmName(env, algorithmObject);
+	jclass algorithmClass = env->GetObjectClass(algorithmObject);
+	jmethodID method = env->GetMethodID(algorithmClass, "getListSize", "()I");
+
+	int length = env->CallIntMethod(algorithmObject, method);
+
+	for (int i = 0; i < length; i++) {
+
+		const char *name = getAlgorithm(env,algorithmObject,algorithmClass,i);
+
+		if(!strcmp("algorithm1",name)){
+
+			struct ImageProcessing1 paramSet = getAlgorithm_1_parameter(env);
+		 	OutputImage = ImageProcessing1(InputImage,  c_width,  c_height ,paramSet);
+		 	InputImage = memcpy2DTo2D(OutputImage,c_width,  c_height);
+		 	__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******parameter %d", paramSet.param1);
+
+
+		}else if(!strcmp("algorithm2",name)){
+
+			struct ImageProcessing2 paramSet = getAlgorithm_2_parameter(env);
+			OutputImage = ImageProcessing2(InputImage,  c_width,  c_height ,paramSet);
+			InputImage = memcpy2DTo2D(OutputImage,c_width,  c_height);
+			__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******parameter %d", paramSet.param1);
+
+		}else if(!strcmp("algorithm3",name)){
+
+			struct ImageProcessing3 paramSet = getAlgorithm_3_parameter(env);
+			OutputImage = ImageProcessing3(InputImage,  c_width,  c_height ,paramSet);
+			InputImage = memcpy2DTo2D(OutputImage,c_width,  c_height);
+			__android_log_print(ANDROID_LOG_ERROR, "GOOGLE", "******parameter %d", paramSet.param1);
+
+		}
+
+	}
+
+	unsigned char *destdata = MemoryCopy2Dto1D(InputImage, c_width, c_height);
 	env->SetByteArrayRegion(outpuarr, 0, (width*height)<<2, reinterpret_cast<jbyte*>(destdata));
 	env->ReleaseByteArrayElements(inputarr, (jbyte *)srcdata, 0);
 
