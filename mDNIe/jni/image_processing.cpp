@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-unsigned char **Image2DMem( int width, int height)
+unsigned char **image2DMemAlloc( int width, int height)
 {
 	 unsigned char** temp;
 
@@ -28,7 +28,7 @@ unsigned char **Image2DMem( int width, int height)
 	 return temp;
 }
 
-unsigned char *MemoryCopy2Dto1D(unsigned char **srcdata, int width, int height){
+unsigned char *memoryCopy2Dto1D(unsigned char **srcdata, int width, int height){
 
 	unsigned char *tempData = new unsigned char[width*height];
 
@@ -44,9 +44,9 @@ unsigned char *MemoryCopy2Dto1D(unsigned char **srcdata, int width, int height){
 
 }
 
-unsigned char **MemoryCopy1Dto2D(unsigned char *srcdata, int width, int height){
+unsigned char **memoryCopy1Dto2D(unsigned char *srcdata, int width, int height){
 
-	unsigned char **tempData = Image2DMem(width, height);
+	unsigned char **tempData = image2DMemAlloc(width, height);
 
 	for (int i = 0; i<(height); i++){ // 1차원 입력 영상의 값을 2차원 배열에 할당한다.
 
@@ -60,10 +60,10 @@ unsigned char **MemoryCopy1Dto2D(unsigned char *srcdata, int width, int height){
 
 }
 
-unsigned char **memcpy2DTo2D(unsigned char **inputImage, int width, int height)
+unsigned char **memoryCopy2DTo2D(unsigned char **inputImage, int width, int height)
 {
 
-	unsigned char **OutputImage = Image2DMem(width, height);
+	unsigned char **OutputImage = image2DMemAlloc(width, height);
 
 	 for(int i=0 ; i<(height); i++){
 
@@ -82,19 +82,19 @@ unsigned char **ImageProcessing1(unsigned char **inputImage, int width, int heig
 {
 
 
-	unsigned char **OutputImage = Image2DMem(width, height);
+	unsigned char **OutputImage = image2DMemAlloc(width, height);
 
 	 for(int i=0 ; i<(height); i++){
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.param1 >= 255)
+			 if(inputImage[i][j] + paramSet.algo1_param1 >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.algo1_param1);
 
 		 }
 
@@ -106,19 +106,19 @@ unsigned char **ImageProcessing2(unsigned char **inputImage, int width, int heig
 {
 
 
-	unsigned char **OutputImage = Image2DMem(width, height);
+	unsigned char **OutputImage = image2DMemAlloc(width, height);
 
 	 for(int i=0 ; i<(height); i++){
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.param1 >= 255)
+			 if(inputImage[i][j] + paramSet.algo2_param1 >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.algo2_param1);
 
 		 }
 
@@ -130,19 +130,19 @@ unsigned char **ImageProcessing3(unsigned char **inputImage, int width, int heig
 {
 
 
-	unsigned char **OutputImage = Image2DMem(width, height);
+	unsigned char **OutputImage = image2DMemAlloc(width, height);
 
 	 for(int i=0 ; i<(height); i++){
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.param1 >= 255)
+			 if(inputImage[i][j] + paramSet.algo3_param1 >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.algo3_param1);
 
 		 }
 

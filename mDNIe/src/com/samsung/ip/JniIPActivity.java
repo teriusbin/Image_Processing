@@ -3,6 +3,8 @@ package com.samsung.ip;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import android.R.string;
@@ -610,9 +612,31 @@ public class JniIPActivity extends Activity {
 			byte[] outputPixel = new byte[rawBitmap.getByteCount()];
 
 			Alogrithm algorithmClass = new Alogrithm();
-			Log.d("message", "java"+ " " + algorithmClass.getNonce());
+			//algorithmClass.algorithmList = new ArrayList<HashMap<String, Object>>();
 			
+			//algorithmClass.algorithmList.size();
+			HashMap<String, Object> modify=new HashMap<String , Object>();
 			
+			Integer temp = 100;
+			algorithmClass.algorithmList.get(0).put("param1", temp); //수정 하고자 할때
+			
+			for(int i=0 ; i<algorithmClass.algorithmList.size() ; i++){ 
+		            Log.d("array",  "" + i);
+		            Log.d("message", "paramlist size"+ " " + algorithmClass.algorithmList.get(i).size());
+		            
+		             
+		            	Log.d("array",  "" + algorithmClass.algorithmList.get(i).get("algorithmName"));
+		            	Log.d("array",  "" + algorithmClass.algorithmList.get(i).get("param1"));
+		            	Log.d("array",  "" + algorithmClass.algorithmList.get(i).get("param2"));
+		            	Log.d("array",  "" + algorithmClass.algorithmList.get(i).get("param3"));
+		            	Log.d("array",  "" + algorithmClass.algorithmList.get(i).get("param4"));
+		  
+		            	Log.d("array",  "");
+		      
+		       
+			}
+			
+	
 			if(resultBitmap==null){
 				
 				int length = JniIPActivity.nativeGetOutputPixel(inputPixel, outputPixel, algorithmClass, rawBitmap.getWidth(), rawBitmap.getHeight());
