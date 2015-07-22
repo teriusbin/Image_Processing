@@ -1,0 +1,93 @@
+<resources>
+
+    <string name="app_name">jnigl</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_jni_gl">IP_mDNIe</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string-array name="algorithmlist">
+        <item>FS</item>
+        <item>HDR_Glare</item>
+        <item>NR</item>
+        <item>FA_DE</item>
+        <item>CS</item>
+        <item>CC</item>
+        <item>ASCR</item>
+    </string-array>
+    <string-array name="algo1_parameterlist">
+        <item>Parameter 1_1</item>
+        <item>Parameter 1_2</item>
+        <item>Parameter 1_3</item>
+        <item>Parameter 1_4</item>
+        <item>Parameter 1_5</item>
+        <item>Parameter 1_6</item>
+    </string-array>
+    <string-array name="algo2_parameterlist">
+        <item>Parameter 2_1</item>
+        <item>Parameter 2_2</item>
+        <item>Parameter 2_3</item>
+        <item>Parameter 2_4</item>
+        <item>Parameter 2_5</item>
+        <item>Parameter 2_6</item>
+    </string-array>
+    <string-array name="algo3_parameterlist">
+        <item>Parameter 3_1</item>
+        <item>Parameter 3_2</item>
+        <item>Parameter 3_3</item>
+        <item>Parameter 3_4</item>
+        <item>Parameter 3_5</item>
+        <item>Parameter 3_6</item>
+    </string-array>
+    <string-array name="algo4_parameterlist">
+        <item>Parameter 4_1</item>
+        <item>Parameter 4_2</item>
+        <item>Parameter 4_3</item>
+        <item>Parameter 4_4</item>
+        <item>Parameter 4_5</item>
+        <item>Parameter 4_6</item>
+    </string-array>
+    <string-array name="algo5_parameterlist">
+        <item>Parameter 5_1</item>
+        <item>Parameter 5_2</item>
+        <item>Parameter 5_3</item>
+        <item>Parameter 5_4</item>
+        <item>Parameter 5_5</item>
+        <item>Parameter 5_6</item>
+    </string-array>
+    <string-array name="algo6_parameterlist">
+        <item>Parameter 6_1</item>
+        <item>Parameter 6_2</item>
+        <item>Parameter 6_3</item>
+        <item>Parameter 6_4</item>
+        <item>Parameter 6_5</item>
+        <item>Parameter 6_6</item>
+    </string-array>
+    <string-array name="algo7_parameterlist">
+        <item>Parameter 7_1</item>
+        <item>Parameter 7_2</item>
+        <item>Parameter 7_3</item>
+        <item>Parameter 7_4</item>
+        <item>Parameter 7_5</item>
+        <item>Parameter 7_6</item>
+    </string-array>
+    <string-array name="menu_list">
+        <item>Image Load</item>
+        <item>Image Save</item>
+        <item>Algo and Parm setting</item>
+        <item>Register Load</item>
+        <item>Register Save</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="action_home">Back Home</string>
+    <string name="action_save">Setting Save</string>
+    <string name="action_viewmode">View mode</string>
+    <string name="action_result">Result</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@id/drag_handle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_height"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/drag" />
+
+    <TextView
+        android:id="@+id/text_algorithm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/drag_handle" />
+ 
+    
+
+    <CheckBox
+        android:id="@+id/checkbox_algorithm"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_height"
+        android:layout_toLeftOf="@id/click_remove" />
+  
+
+    <Button
+        android:id="@+id/click_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_height"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/click_remove"
+        android:focusable="false" />
+
+</RelativeLayout>
