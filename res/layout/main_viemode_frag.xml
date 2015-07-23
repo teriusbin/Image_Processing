@@ -62,27 +62,6 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <SlidingDrawer
-        android:id="@+id/viewmode_drawer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:content="@+id/viewmode_content"
-        android:handle="@+id/viewmode_handle"
-        android:topOffset="200dip" >
-
-        <ImageView
-            android:id="@id/viewmode_handle"
-            android:layout_width="44dip"
-            android:layout_height="22dip"
-            android:src="@drawable/slidingdrawer" />
-
-        <LinearLayout
-            android:id="@id/viewmode_content"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#44000000"
-            android:orientation="vertical" >
-        </LinearLayout>
-    </SlidingDrawer>
+   
 
 </FrameLayout>

@@ -7,13 +7,13 @@ public class AlgorithmItem {
 	private boolean mEnable;
 	private int mIndex;
 
-
-	public AlgorithmItem(String name, boolean enable, int index) {
+	public AlgorithmItem(String name, boolean enable, int index ) {
 		super();
 		// TODO Auto-generated constructor stub
 		this.mName = name;
 		this.mEnable = enable;
 		this.mIndex = index;
+		
 	}
 
 	public String getName() {

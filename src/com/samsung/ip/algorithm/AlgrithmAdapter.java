@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -41,6 +42,7 @@ public class AlgrithmAdapter extends ArrayAdapter<AlgorithmItem> {
 			LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = vi.inflate(R.layout.setting_algorithm, null);
 		}
+		
 
 		CheckBox mcheckbox = (CheckBox) v.findViewById(R.id.checkbox_algorithm);
 		AlgorithmItem p = items.get(pos);

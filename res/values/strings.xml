@@ -1,76 +1,126 @@
 <resources>
 
-    <string name="app_name">jnigl</string>
+    <string name="app_name">mDNIe</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_jni_gl">IP_mDNIe</string>
     <string name="open">open</string>
     <string name="close">close</string>
 
+    
     <string-array name="algorithmlist">
-        <item>FS</item>
-        <item>HDR_Glare</item>
-        <item>NR</item>
-        <item>FA_DE</item>
+        <item>SLCE</item>
+        <item>NR</item>      
+        <item>DE_FA</item>
         <item>CS</item>
         <item>CC</item>
         <item>ASCR</item>
     </string-array>
-    <string-array name="algo1_parameterlist">
-        <item>Parameter 1_1</item>
-        <item>Parameter 1_2</item>
-        <item>Parameter 1_3</item>
-        <item>Parameter 1_4</item>
-        <item>Parameter 1_5</item>
-        <item>Parameter 1_6</item>
+    <string-array name="SLCE_parameterlist">
+        <item>SLCE_MASK</item>
+        <item>SLCE_BT</item>
+        <item>SLCE_MO</item>
+        <item>SLCE_ON</item>
+        <item>SLCE_G</item>
+        <item>SLCE_CG</item>
+        <item>SLCE_SO</item>
+        <item>SLCE_SR</item>
+        <item>SLCE_SMD</item>
+        <item>SLCE_IG</item>
+        <item>SLCE_RO</item>
+        <item>SLCE_RG</item>
+        <item>SLCE_REF_GAIN</item>
+        <item>SLCE_H</item>
+        <item>SLCE_V</item>
+        <item>SLCE_BTH</item>
+        <item>SLCE_BSR</item>
+        <item>SLCE_DTH</item>
+        <item>SLCE_MRO</item>
     </string-array>
-    <string-array name="algo2_parameterlist">
-        <item>Parameter 2_1</item>
-        <item>Parameter 2_2</item>
-        <item>Parameter 2_3</item>
-        <item>Parameter 2_4</item>
-        <item>Parameter 2_5</item>
-        <item>Parameter 2_6</item>
+    <string-array name="NR_parameterlist">
+        <item>NR_E</item>
     </string-array>
-    <string-array name="algo3_parameterlist">
-        <item>Parameter 3_1</item>
-        <item>Parameter 3_2</item>
-        <item>Parameter 3_3</item>
-        <item>Parameter 3_4</item>
-        <item>Parameter 3_5</item>
-        <item>Parameter 3_6</item>
+    <string-array name="DE_FA_parameterlist">
+        <item>DE_E</item>
+        <item>DE_G</item>
+        <item>DE_M1</item>
+        <item>DE_M2</item>
+        <item>FE_E</item>
+        <item>FA_ET</item>
+        <item>FA_SP</item>
+        <item>FA_SN</item>
+        <item>FA_MDG</item>
+        <item>FA_PP</item>   
+        <item>FA_SC</item>
+        <item>FA_D</item>
+        <item>FA_DD</item>
+        <item>FA_PMW</item>
+        <item>FA_FMW</item>
+        <item>FA_SZW</item>
+        <item>FA_SZH</item>
+        <item>FA_OC10C</item>
+        <item>FA_OC20C</item>
     </string-array>
-    <string-array name="algo4_parameterlist">
-        <item>Parameter 4_1</item>
-        <item>Parameter 4_2</item>
-        <item>Parameter 4_3</item>
-        <item>Parameter 4_4</item>
-        <item>Parameter 4_5</item>
-        <item>Parameter 4_6</item>
+    <string-array name="CS_parameterlist">
+        <item>CE_E</item>
+        <item>CS_E</item>
     </string-array>
-    <string-array name="algo5_parameterlist">
-        <item>Parameter 5_1</item>
-        <item>Parameter 5_2</item>
-        <item>Parameter 5_3</item>
-        <item>Parameter 5_4</item>
-        <item>Parameter 5_5</item>
-        <item>Parameter 5_6</item>
+    <string-array name="CC_parameterlist">
+        <item>TestValue</item>
     </string-array>
-    <string-array name="algo6_parameterlist">
-        <item>Parameter 6_1</item>
-        <item>Parameter 6_2</item>
-        <item>Parameter 6_3</item>
-        <item>Parameter 6_4</item>
-        <item>Parameter 6_5</item>
-        <item>Parameter 6_6</item>
-    </string-array>
-    <string-array name="algo7_parameterlist">
-        <item>Parameter 7_1</item>
-        <item>Parameter 7_2</item>
-        <item>Parameter 7_3</item>
-        <item>Parameter 7_4</item>
-        <item>Parameter 7_5</item>
-        <item>Parameter 7_6</item>
+    <string-array name="ASCR_parameterlist">
+        <item>ASCR_MASK</item>
+        <item>ASCR_BT</item>
+        <item>ASCR_MO</item>
+        <item>ASCR_AO</item>
+        <item>ASCR_LO</item>
+        <item>ASCR_S</item>
+        <item>ASCR_SCB</item>
+        <item>ASCR_SCR</item>
+        <item>ASCR_DU</item>
+        <item>ASCR_DD</item>
+        <item>ASCR_DR</item>
+        <item>ASCR_DL</item>
+        <item>ASCR_DDU</item>
+        <item>ASCR_DDD</item>
+        <item>ASCR_DDR</item>
+        <item>ASCR_DDL</item>
+        <item>ASCR_SRR</item>
+        <item>ASCR_SRG</item>
+        <item>ASCR_SRB</item>
+        <item>ASCR_SYR</item>
+        <item>ASCR_SYG</item>
+        <item>ASCR_SYB</item>
+        <item>ASCR_SMR</item>
+        <item>ASCR_SMG</item>
+        <item>ASCR_SMB</item>
+        <item>ASCR_SWR</item>
+        <item>ASCR_SWG</item>
+        <item>ASCR_SWB</item>
+        <item>ASCR_WCR</item>
+        <item>ASCR_WRR</item>
+        <item>ASCR_WCG</item>
+        <item>ASCR_WRG</item>
+        <item>ASCR_WCB</item>
+        <item>ASCR_WRB</item>
+        <item>ASCR_WMR</item>
+        <item>ASCR_WGR</item>
+        <item>ASCR_WMG</item>
+        <item>ASCR_WGG</item>
+        <item>ASCR_WMB</item>
+        <item>ASCR_WGB</item>
+        <item>ASCR_WYR</item>
+        <item>ASCR_WBR</item>
+        <item>ASCR_WYG</item>
+        <item>ASCR_WBG</item>
+        <item>ASCR_WYB</item>
+        <item>ASCR_WBB</item>
+        <item>ASCR_WWR</item>
+        <item>ASCR_WKR</item>
+        <item>ASCR_WWG</item>
+        <item>ASCR_WKG</item>
+        <item>ASCR_WWB</item>
+        <item>ASCR_WKB</item>
     </string-array>
     <string-array name="menu_list">
         <item>Image Load</item>

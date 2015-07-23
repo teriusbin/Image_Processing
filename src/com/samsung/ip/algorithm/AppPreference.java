@@ -77,4 +77,13 @@ public class AppPreference {
 			return dftValue;
 		}
 	}
+	
+	public void remove(String key) {
+		SharedPreferences pref = mContext.getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
+		SharedPreferences.Editor editor = pref.edit();
+		Log.d(TAG, "preference String put");
+		editor.remove(key);
+		//editor.putString(key, value);
+		editor.commit();
+	}
 }

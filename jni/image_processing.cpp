@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 unsigned char **image2DMemAlloc( int width, int height)
 {
 	 unsigned char** temp;
@@ -79,9 +78,8 @@ unsigned char **memoryCopy2DTo2D(unsigned char **inputImage, int width, int heig
 	 return OutputImage;
 }
 
-unsigned char **FSFunc(unsigned char **inputImage, int width, int height, struct FSFuncParameter paramSet)
+unsigned char **SLCEFunc(unsigned char **inputImage, int width, int height, struct SLCEFuncParameter paramSet)
 {
-
 
 	unsigned char **OutputImage = image2DMemAlloc(width, height);
 
@@ -89,13 +87,13 @@ unsigned char **FSFunc(unsigned char **inputImage, int width, int height, struct
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.FS_param1 >= 255)
+			 if(inputImage[i][j] + paramSet.SLCE_BSR >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.FS_param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.SLCE_BSR);
 
 		 }
 
@@ -103,30 +101,7 @@ unsigned char **FSFunc(unsigned char **inputImage, int width, int height, struct
 
 	 return OutputImage;
 }
-unsigned char **HDRGlareFunc(unsigned char **inputImage, int width, int height, struct HDRGlareFuncParameter paramSet)
-{
 
-
-	unsigned char **OutputImage = image2DMemAlloc(width, height);
-
-	 for(int i=0 ; i<(height); i++){
-
-		 for(int j=0 ; j<(width) ; j++){
-
-			 if(inputImage[i][j] + paramSet.HDRGlare_param1 >= 255)
-
-				 OutputImage[i][j]= 255;
-
-			 else
-
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.HDRGlare_param1);
-
-		 }
-
-	 }
-
-	 return OutputImage;
-}
 unsigned char **NRFunc(unsigned char **inputImage, int width, int height, struct NRFuncParameter paramSet)
 {
 
@@ -137,13 +112,13 @@ unsigned char **NRFunc(unsigned char **inputImage, int width, int height, struct
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.NR_param1 >= 255)
+			 if(inputImage[i][j] + paramSet.NR_E >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.NR_param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.NR_E);
 
 		 }
 
@@ -151,7 +126,7 @@ unsigned char **NRFunc(unsigned char **inputImage, int width, int height, struct
 
 	 return OutputImage;
 }
-unsigned char **FADEFunc(unsigned char **inputImage, int width, int height, struct FADEFuncParameter paramSet)
+unsigned char **DE_FAFunc(unsigned char **inputImage, int width, int height, struct DE_FAFuncParameter paramSet)
 {
 
 
@@ -161,13 +136,13 @@ unsigned char **FADEFunc(unsigned char **inputImage, int width, int height, stru
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.FADE_param1 >= 255)
+			 if(inputImage[i][j] + paramSet.FA_PP >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.FADE_param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.FA_PP);
 
 		 }
 
@@ -185,13 +160,13 @@ unsigned char **CSFunc(unsigned char **inputImage, int width, int height, struct
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.CS_param1 >= 255)
+			 if(inputImage[i][j] + paramSet.CE_E >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.CS_param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.CE_E);
 
 		 }
 
@@ -210,13 +185,13 @@ unsigned char **CCFunc(unsigned char **inputImage, int width, int height, struct
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.CC_param1 >= 255)
+			 if(inputImage[i][j] + paramSet.TestValue >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.CC_param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.TestValue);
 
 		 }
 
@@ -235,13 +210,13 @@ unsigned char **ASCRFunc(unsigned char **inputImage, int width, int height, stru
 
 		 for(int j=0 ; j<(width) ; j++){
 
-			 if(inputImage[i][j] + paramSet.ASCR_param1 >= 255)
+			 if(inputImage[i][j] + paramSet.ASCR_BT >= 255)
 
 				 OutputImage[i][j]= 255;
 
 			 else
 
-				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.ASCR_param1);
+				 OutputImage[i][j] = (unsigned char)(inputImage[i][j] +paramSet.ASCR_BT);
 
 		 }
 

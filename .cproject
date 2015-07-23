@@ -29,7 +29,6 @@
 							<tool id="com.android.gcc.compiler.920159670" name="Android GCC Compiler" superClass="com.android.gcc.compiler">
 								<option id="com.android.gcc.option.includePath.543162184" superClass="com.android.gcc.option.includePath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;C:\android-ndk-r10e\platforms\android-16\arch-arm\usr\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\android-ndk-r10e\sources\cxx-stl\stlport\stlport&quot;"/>
 								</option>
 								<inputType id="com.android.gcc.inputType.532362313" superClass="com.android.gcc.inputType"/>
 							</tool>

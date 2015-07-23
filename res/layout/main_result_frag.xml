@@ -67,7 +67,82 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="#44000000"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingRight="5px" >
+
+            <HorizontalScrollView
+                android:id="@+id/horScrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:id="@+id/button_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <Button
+                            android:id="@+id/button_SLCE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:text="SLCE"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/button_NR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:text="NR"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/button_FA_DE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:text="DE/FA"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/button_CS"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:text="CS"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/button_CC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:text="CC"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/button_ASCR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="onClick"
+                            android:text="ASCR"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </ScrollView>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:id="@+id/dynamicArea"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+            </LinearLayout>
         </LinearLayout>
     </SlidingDrawer>
 

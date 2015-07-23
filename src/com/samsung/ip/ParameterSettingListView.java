@@ -26,8 +26,7 @@ public class ParameterSettingListView extends ListActivity {
 	private AlgorithmData algorithmData;
 	private AlgorithmEnableData algorithmEnableData;
 	private String algoName;
-	private int parameterCnt;
-	private int algoCnt;
+
 	public static final String TAG = "ParameterSettingListView";
 
 	@Override
@@ -45,66 +44,39 @@ public class ParameterSettingListView extends ListActivity {
 		Intent intent = getIntent();
 		int index = intent.getExtras().getInt("AlgorithmIndex");
 		algoName = intent.getExtras().getString("AlgorithmName");
-		//Log.d(TAG, "algoname"+algoName);
 		algorithmData = (AlgorithmData) intent.getExtras().getSerializable("algorithmData");
 		algorithmEnableData = (AlgorithmEnableData) intent.getExtras().getSerializable("algorithmEnableData");
-
-		Log.d(TAG, "index :" + index);
-		String[] algoArray = getResources().getStringArray(R.array.algorithmlist);
-		String[] parameterArray = null;
-		ArrayList<AlgorithmItem> mParaList = new ArrayList<AlgorithmItem>();
-		switch (index) {
-
-		case 0:
-			parameterArray = getResources().getStringArray(R.array.algo1_parameterlist);
-			break;
-
-		case 1:
-			parameterArray = getResources().getStringArray(R.array.algo2_parameterlist);
-			break;
-
-		case 2:
-			parameterArray = getResources().getStringArray(R.array.algo3_parameterlist);
-			break;
-
-		case 3:
-			parameterArray = getResources().getStringArray(R.array.algo4_parameterlist);
-			break;
-
-		case 4:
-			parameterArray = getResources().getStringArray(R.array.algo5_parameterlist);
-			break;
-
-		case 5:
-			parameterArray = getResources().getStringArray(R.array.algo6_parameterlist);
-			break;
-
-		case 6:
-			parameterArray = getResources().getStringArray(R.array.algo7_parameterlist);
-			break;
+		if(algorithmEnableData == null){
+			Log.d(TAG, "endable data ");
 		}
 
-		parameterCnt = parameterArray.length;
-		algoCnt = algoArray.length;
+		String algoname = algoName;
+		int resStringID = getResources().getIdentifier(algoname + "_parameterlist", "array", "com.samsung.ip");
+		String[] algoArray = getResources().getStringArray(R.array.algorithmlist);
+		String[] parameterArray = getResources().getStringArray(resStringID);
+		ArrayList<AlgorithmItem> mParaList = new ArrayList<AlgorithmItem>();
+
 		
 		int itemCnt = 0;
-		String paraName ;
+		String paraName;
 		// 알고리즘 Name으로 ArrayList 검색 후 해당 알고리즘 파라미터들로 셋팅
-		for (int algoindex = 0; algoindex < algoCnt; algoindex++) {
-			
+		//Log.d(TAG, "algo length " +algorithmEnableData.algoList.le);
+		for (int algoindex = 0; algoindex < algorithmEnableData.algoList.length; algoindex++) {
+
 			if (algoName.equals(algorithmEnableData.algorithmEableList.get(algoindex).get("algorithmName"))) {
 				AlgorithmItem _p;
-			//	Log.d(TAG, "" +algorithmEnableData.algorithmEableList.get(algoindex).get("algorithmName"));
+				// Log.d(TAG, ""
+				// +algorithmEnableData.algorithmEableList.get(algoindex).get("algorithmName"));
 				for (String str : parameterArray) {
-					
-					paraName = "param"+(itemCnt+1);
-					//Log.d(TAG, "" + algorithmEnableData.algorithmEableList.get(algoindex).get(paraName));
+
+					paraName = str;
+					// Log.d(TAG, "" +
+					// algorithmEnableData.algorithmEableList.get(algoindex).get(paraName));
 					AlgorithmItem p = new AlgorithmItem(str,
 							(boolean) algorithmEnableData.algorithmEableList.get(algoindex).get(paraName), itemCnt++);
 					mParaList.add(p);
 				}
 			}
-
 		}
 
 		// 어댑터 등록
@@ -145,28 +117,30 @@ public class ParameterSettingListView extends ListActivity {
 
 		case R.id.action_save_para:
 			//
-	
-			String paraName ;
+
+			String paraName;
 			// 알고리즘 Name으로 ArrayList 검색 후 해당 알고리즘 파라미터들로 셋팅
 			// 알고리즘 전체 검색
-			for (int algoindex = 0; algoindex < algoCnt; algoindex++) {
-				
-				//이름이 같을 때 
+			for (int algoindex = 0; algoindex < algorithmEnableData.algoList.length; algoindex++) {
+
+				// 이름이 같을 때
 				if (algoName.equals(algorithmEnableData.algorithmEableList.get(algoindex).get("algorithmName"))) {
 					AlgorithmItem _p;
-					Log.d(TAG, "" +algorithmEnableData.algorithmEableList.get(algoindex).get("algorithmName"));
-					
-					//파라미터 갯수만큼 enable 체크 
-					for(int paraindex = 0 ; paraindex < parameterCnt ; paraindex++){
-						//어댑터에서 아이템을 하나씩 꺼내서 확인
+					Log.d(TAG, "" + algorithmEnableData.algorithmEableList.get(algoindex).get("algorithmName"));
+
+					// 파라미터 갯수만큼 enable 체크
+					for (int paraindex = 0; paraindex < algorithmEnableData.parameterArrayList
+							.get(algoindex).length; paraindex++) {
+						// 어댑터에서 아이템을 하나씩 꺼내서 확인
+						// 확인 후 enable 상태 저장
 						_p = m_adapter.getItem(paraindex);
-						paraName = "param"+ (paraindex+1);
+
 						if (_p.isEnable()) {
-							algorithmEnableData.algorithmEableList.get(algoindex).put(paraName, true);
+							algorithmEnableData.algorithmEableList.get(algoindex).put(_p.getName(), true);
 						} else {
-							algorithmEnableData.algorithmEableList.get(algoindex).put(paraName, false);
+							algorithmEnableData.algorithmEableList.get(algoindex).put(_p.getName(), false);
 						}
-					}				
+					}
 				}
 
 			}
