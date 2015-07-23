@@ -16,7 +16,7 @@ import com.samsung.ip.algorithm.AlgorithmEnableData;
 import com.samsung.ip.algorithm.AlgorithmMultiAdapter;
 import com.samsung.ip.algorithm.AlgorithmMultiItem;
 import com.samsung.ip.algorithm.AppPreference;
-import com.samsung.ip.filelist.Main;
+import com.samsung.ip.filelist.FileListActivity;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -538,7 +538,7 @@ public class JniIPActivity extends Activity implements SensorEventListener {
 
 		case MENU_REGISTER_LOAD:
 			
-			Intent intentFileActivity = new Intent(JniIPActivity.this, Main.class);
+			Intent intentFileActivity = new Intent(JniIPActivity.this, FileListActivity.class);
 			startActivityForResult(intentFileActivity, REQ_CODE_FILE_SETTING);
 
 			mDrawerLayout.closeDrawer(mDrawerList);

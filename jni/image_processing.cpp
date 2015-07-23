@@ -181,9 +181,9 @@ unsigned char **CCFunc(unsigned char **inputImage, int width, int height, struct
 
 	unsigned char **OutputImage = image2DMemAlloc(width, height);
 
-	 for(int i=0 ; i<(height); i++){
+	 for(int i=0 ; i< height; i++){
 
-		 for(int j=0 ; j<(width) ; j++){
+		 for(int j=0 ; j< width ; j++){
 
 			 if(inputImage[i][j] + paramSet.TestValue >= 255)
 

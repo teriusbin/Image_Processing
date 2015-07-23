@@ -33,7 +33,7 @@
             android:name="ParameterSettingListView"
             android:theme="@android:style/Theme.Holo.Light" >
         </activity>
-               <activity android:name=".filelist.Main"></activity>
+               <activity android:name=".filelist.FileListActivity"></activity>
 
     </application>
 
